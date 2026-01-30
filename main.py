@@ -4,11 +4,13 @@ import wikipedia
 from aiogram import Bot,Dispatcher,types,F
 from aiogram.filters import CommandStart
 import os
+from dotenv import load_dotenv
 
 
-wikipedia.set_lang("en")
+load_dotenv()
+wikipedia.set_lang("uz")
 
-API_TOKEN = ""
+API_TOKEN = os.getenv("BOT_TOKEN")
 bot = Bot(token = API_TOKEN)
 dp = Dispatcher()
 
@@ -31,4 +33,5 @@ async def main():
     await dp.start_polling(bot)
 
 if __name__ == "__main__":
+
     asyncio.run(main())
